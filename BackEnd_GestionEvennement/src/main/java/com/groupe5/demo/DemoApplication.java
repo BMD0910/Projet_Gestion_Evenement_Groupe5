@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.groupe5.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,3 +11,4 @@ public class DemoApplication {
 	}
 
 }
+        
