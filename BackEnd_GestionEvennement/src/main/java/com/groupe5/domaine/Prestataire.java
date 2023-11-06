@@ -28,9 +28,9 @@ public class Prestataire {
     private String description ;
 
 /*Utilisation de OneToMany pour effectuer la jointure de Evenement et Prestataire */
-    @OneToMany
+    @OneToMany(mappedBy = "idPrestataire")
     @JoinColumn(name = "idEvenement", nullable = false)
-    private List<Prestataire> prestataires;
+    private List<Evenement> evenements;
 
     /*Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire */
     @ManyToMany 
@@ -86,12 +86,12 @@ public class Prestataire {
         this.services = services;
     }
 
-    public List<Prestataire> getPrestataire() {
-        return this.prestataires;
+    public List<Evenement> getPrestataire() {
+        return this.evenements;
     }
 
-    public void setPrestataire(List<Prestataire> prestataires) {
-        this.prestataires = prestataires;
+    public void setPrestataire(List<Evenement> evenements) {
+        this.evenements = evenements;
     }
 
 }
