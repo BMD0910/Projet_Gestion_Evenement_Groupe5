@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
@@ -18,8 +18,8 @@ public class Prestataire {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(nullable=false)
-    private long idPrestataire ;
+    @Column(name = "idPrestataire",nullable=false)
+    private int idPrestataire ;
     
     @Column(nullable=false)
     private String nom ;
@@ -27,26 +27,24 @@ public class Prestataire {
     @Column(nullable=false)
     private String description ;
 
-/*Utilisation de OneToMany pour effectuer la jointure de Evenement et Prestataire */
-    @OneToMany(mappedBy = "idPrestataire")
-    @JoinColumn(name = "idEvenement", nullable = false)
+// Utilisation de OneToMany pour effectuer la jointure de Evenement et Prestataire
+    @OneToMany(targetEntity = Evenement.class, mappedBy = "prestataire")
+    @Column(nullable = false)
     private List<Evenement> evenements;
 
-    /*Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire */
-    @ManyToMany 
+// Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire 
+    @ManyToMany(targetEntity = Service.class)
     @JoinTable(name = "ServiceOfferts",joinColumns = @JoinColumn(name = "idPrestataire"), 
                 inverseJoinColumns = @JoinColumn(name = "idService")
                 )
     private List<Service> services = new ArrayList<>();
-    
-    
+
    /* --------------les Constructeurs--------------- */
     public Prestataire() {}
 
-    public Prestataire(String nom, String description, List<Service> services) {
+    public Prestataire(String nom, String description) {
         this.nom = nom;
         this.description = description;
-        this.services = services;
     }
 
 
@@ -54,11 +52,11 @@ public class Prestataire {
 
     
    
-    public long getIdPrestataire() {
+    public int getIdPrestataire() {
         return idPrestataire;
     }
 
-    public void setIdPrestataire(long idPrestataire) {
+    public void setIdPrestataire(int idPrestataire) {
         this.idPrestataire = idPrestataire;
     }
 
@@ -78,19 +76,11 @@ public class Prestataire {
         this.description = description;
     }
 
-    public List<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(List<Service> services) {
-        this.services = services;
-    }
-
-    public List<Evenement> getPrestataire() {
+    public List<Evenement> getEvenement() {
         return this.evenements;
     }
 
-    public void setPrestataire(List<Evenement> evenements) {
+    public void setEvenement(List<Evenement> evenements) {
         this.evenements = evenements;
     }
 
