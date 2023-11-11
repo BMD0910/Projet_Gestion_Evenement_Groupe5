@@ -1,13 +1,62 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.desktop {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.desktop .div {
+  background-color: #ffffff;
+  height: 728px;
+  position: relative;
+  width: 1065px;
+}
+
+.desktop .ordinateur {
+  background-image: url(/home/zboss/Images/cadenas.png);
+  height: 500px;
+  left: 150px;
+  object-fit: cover;
+  position: absolute;
+  top: 106px;
+  width: 470px;
+}
+
+.desktop .rectangle {
+  background-color: #bbf8ba;
+  height: 58px;
+  left: 900px;
+  position: absolute;
+  top: 199px;
+  width: 200px;
+}
+
+.desktop .rectangle-2 {
+  background-color: #bbf8ba;
+  height: 50px;
+  left: 900px;
+  position: absolute;
+  top: 288px;
+  width: 200px;
+}
+
+.desktop .overlap-group {
+  height: 50px;
+  left: 920px;
+  position: absolute;
+  top: 377px;
+  width: 156px;
+}
+
+.desktop .text-wrapper {
+  color: #000000;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  left: 41px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 9px;
 }
