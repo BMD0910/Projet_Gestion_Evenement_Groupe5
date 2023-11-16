@@ -28,8 +28,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> getToken(@RequestBody AccountCredentials credentials){
-        UsernamePasswordAuthenticationToken creds = new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword()); 
         
+        UsernamePasswordAuthenticationToken creds = new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword()); 
         Authentication auth = authenticationManager.authenticate(creds);
         String jwts = jwtService.getToken(auth.getName()); // Generer le jeton pour le user
         

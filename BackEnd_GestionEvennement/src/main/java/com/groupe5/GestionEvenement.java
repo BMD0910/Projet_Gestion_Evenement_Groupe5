@@ -15,6 +15,7 @@ import com.groupe5.domaine.Utilisateur;
 import com.groupe5.domaine.UtilisateurRepository;
 
 import java.util.Arrays;
+
 @SpringBootApplication
 public class GestionEvenement implements CommandLineRunner {
 
