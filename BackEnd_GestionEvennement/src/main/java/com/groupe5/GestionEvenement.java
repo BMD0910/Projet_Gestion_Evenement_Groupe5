@@ -1,12 +1,19 @@
-package com.groupe5.domaine;
+package com.groupe5;
 
-import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
+import com.groupe5.domaine.Evenement;
+import com.groupe5.domaine.EvenementRepository;
+import com.groupe5.domaine.Prestataire;
+import com.groupe5.domaine.PrestataireRepository;
+import com.groupe5.domaine.Service;
+import com.groupe5.domaine.ServiceRepository;
+import com.groupe5.domaine.Utilisateur;
+import com.groupe5.domaine.UtilisateurRepository;
+
 import java.util.Arrays;
 @SpringBootApplication
 public class GestionEvenement implements CommandLineRunner {
