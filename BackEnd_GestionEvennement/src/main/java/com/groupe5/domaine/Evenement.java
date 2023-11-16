@@ -1,5 +1,8 @@
 package com.groupe5.domaine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -7,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity 
@@ -32,23 +37,41 @@ public class Evenement {
     private String lieu ;
 
 /*La Notation ManyToOne permet de joindre des Evenement a un user */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne /*(fetch = FetchType.LAZY)*/
     @JoinColumn(name = "utilisateur")
-    private Utilisateur utilisateur;
+     private Utilisateur utilisateur  ;
+
+    //private Utilisateur utilisateur;
 
 /*Utilisation de ManyToOne pour effectuer la jointure de Evenement et Prestataire */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "prestataire")
-    private Prestataire prestataire;
+    @ManyToMany(targetEntity = Prestataire.class) 
+    @JoinTable(name = "EvensPrestataire",joinColumns = @JoinColumn(name = "idEvenement"), 
+    inverseJoinColumns = @JoinColumn(name = "idPrestataire"))
+    private List<Prestataire> prestataire = new ArrayList<>();
+
 
 
     /* --------------les Constructeurs--------------- */
     public Evenement() {}
 
-    public Evenement(Utilisateur utilisateur, Prestataire prestataire, String nom, String type, String description, String date, String lieu) 
+    public Evenement( Utilisateur utilisateur,String nom, String type, String description, String date, String lieu) 
     {
+        super();
+        //this.utilisateur = utilisateur;
         this.utilisateur = utilisateur;
-        this.prestataire = prestataire;
+       
+        this.nom = nom;
+        this.type = type;
+        this.description = description;
+        this.date = date;
+        this.lieu = lieu;
+    }
+
+    public Evenement(String nom, String type, String description, String date, String lieu) 
+    {
+        super();
+        //this.utilisateur = utilisateur;
+       
         this.nom = nom;
         this.type = type;
         this.description = description;
@@ -117,13 +140,17 @@ public class Evenement {
         return this.utilisateur;
     }
 
-    public Prestataire getPrestataires() {
+    public List<Prestataire> getPrestataires() {
         return prestataire;
     }
 
-    public void setPrestataires(Prestataire prestataire) {
+    public void setPrestataires(List<Prestataire> prestataire) {
         this.prestataire = prestataire;
     }
-
+    
+    public  void ajoutPrestataire(Prestataire prestataire ){
+        this.prestataire.add(prestataire) ;
+       
+     }
      
 }

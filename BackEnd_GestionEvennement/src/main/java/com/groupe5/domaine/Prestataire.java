@@ -11,7 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class Prestataire {
@@ -28,8 +28,9 @@ public class Prestataire {
     private String description ;
 
 // Utilisation de OneToMany pour effectuer la jointure de Evenement et Prestataire
-    @OneToMany(targetEntity = Evenement.class, mappedBy = "prestataire")
-    @Column(nullable = false)
+    @ManyToMany(targetEntity = Evenement.class) 
+    @JoinTable(name = "EvensPrestataire",joinColumns = @JoinColumn(name = "idPrestataire"), 
+    inverseJoinColumns = @JoinColumn(name = "idEvenement"))
     private List<Evenement> evenements;
 
 // Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire 
@@ -43,6 +44,7 @@ public class Prestataire {
     public Prestataire() {}
 
     public Prestataire(String nom, String description) {
+        super();
         this.nom = nom;
         this.description = description;
     }
@@ -76,12 +78,31 @@ public class Prestataire {
         this.description = description;
     }
 
-    public List<Evenement> getEvenement() {
-        return this.evenements;
+   
+    public List<Service> getServices() {
+        return services;
     }
 
-    public void setEvenement(List<Evenement> evenements) {
+    public void setServices(List<Service> services) {
+        this.services = services;
+    }
+
+    public  void ajouService(Service service ){
+       this.services.add(service) ;
+      
+    }
+
+    public List<Evenement> getEvenements() {
+        return evenements;
+    }
+
+    public void setEvenements(List<Evenement> evenements) {
         this.evenements = evenements;
+    }
+    
+     public  void ajouEvenement(Evenement evenement ){
+       this.evenements.add(evenement) ;
+      
     }
 
 }

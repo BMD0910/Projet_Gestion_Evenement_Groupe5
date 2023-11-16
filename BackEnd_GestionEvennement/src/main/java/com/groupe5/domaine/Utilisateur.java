@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Entity;
 
@@ -36,7 +37,8 @@ public class Utilisateur {
     private String email;
     
 /*Utilsation de OneToMany pour joindre les classes Utilisateur et Evenement */
-   @OneToMany(targetEntity = Evenement.class, mappedBy = "utilisateur", cascade = CascadeType.ALL)
+   @OneToMany(targetEntity = Evenement.class, mappedBy = "utilisateur",cascade = CascadeType.ALL)
+   //@JoinColumn(name = "evenements")
    private List<Evenement> evenements = new ArrayList<>();
 
   /* --------------les Constructeurs--------------- */
@@ -44,6 +46,7 @@ public class Utilisateur {
 
     /*l'attribut id sera generer automatiquemnent donc il n'est pas necessaire de l'introduire dans la constructeur */
     public Utilisateur(String nom, String prenom, String password, String role, String email) {
+        super();
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
@@ -72,7 +75,6 @@ public class Utilisateur {
     public String getPrenom() {
         return prenom;
     }
-
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }

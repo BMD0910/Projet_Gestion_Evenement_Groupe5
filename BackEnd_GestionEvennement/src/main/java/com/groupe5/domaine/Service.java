@@ -25,17 +25,17 @@ public class Service {
 
     @Column(nullable = false)
     private String description;
-/*Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire */
+    /*Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire */
     @ManyToMany(targetEntity = Prestataire.class)
     @JoinTable(name = "ServiceOfferts",joinColumns = @JoinColumn(name = "idService"), 
-                inverseJoinColumns = @JoinColumn(name = "idPrestataire")
-                )
+                inverseJoinColumns = @JoinColumn(name = "idPrestataire"))
     private List<Prestataire> prestataires = new ArrayList<>();
 
      /* --------------les Constructeurs--------------- */
     public Service() {}
 
     public Service(String nom, String description) {
+        super();
         this.nom = nom;
         this.description = description;
     }
