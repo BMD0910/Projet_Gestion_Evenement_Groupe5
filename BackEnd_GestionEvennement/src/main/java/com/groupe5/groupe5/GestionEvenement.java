@@ -11,6 +11,8 @@ import com.groupe5.domaine.Prestataire;
 import com.groupe5.domaine.PrestataireRepository;
 import com.groupe5.domaine.Service;
 import com.groupe5.domaine.ServiceRepository;
+import com.groupe5.domaine.User;
+import com.groupe5.domaine.UserRepository;
 import com.groupe5.domaine.Utilisateur;
 import com.groupe5.domaine.UtilisateurRepository;
 
@@ -30,6 +32,9 @@ public class GestionEvenement implements CommandLineRunner {
 
 	@Autowired
 	private ServiceRepository serviceRepository;
+
+	@Autowired
+	private UserRepository userReposit;
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionEvenement.class, args);
@@ -92,8 +97,8 @@ public class GestionEvenement implements CommandLineRunner {
 
 		evenementRepository.saveAll(Arrays.asList(event1, event2, event3, event4, event5,event6));
 
-	
+		userReposit.save(new User("admin", "$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", "ADMIN"));
+		userReposit.save(new User("user", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "USER"));		
 		
 	}
 }
-        
