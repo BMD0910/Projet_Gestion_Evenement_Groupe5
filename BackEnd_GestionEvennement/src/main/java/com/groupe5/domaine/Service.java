@@ -18,7 +18,7 @@ public class Service {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(nullable=false)
-	private Long idService;
+	private int idService;
 
     @Column(nullable=false, unique=true)
 	private String nom;
@@ -42,11 +42,11 @@ public class Service {
 
     /* --------------les getters et les setters--------------- */
 
-    public Long getId() {
+    public int getId() {
         return idService;
     }
 
-    public void setId(Long idService) {
+    public void setId(int idService) {
         this.idService = idService;
     }
 
