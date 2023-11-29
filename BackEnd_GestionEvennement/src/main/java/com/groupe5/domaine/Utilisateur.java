@@ -19,19 +19,19 @@ public class Utilisateur {
 	@Column(nullable=false)
 	private int idUtilisateur;
     
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private String nom;
      
-    @Column(nullable=false)
+    @Column(nullable=true)
     private String prenom ;
 	 
-    @Column(nullable=false)
+    @Column(nullable=true)
 	private String password;
 
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private String role;
     
-    @Column(nullable=false)
+    @Column(nullable=true)
     private String email;
     
 /*Utilsation de OneToMany pour joindre les classes Utilisateur et Evenement */
