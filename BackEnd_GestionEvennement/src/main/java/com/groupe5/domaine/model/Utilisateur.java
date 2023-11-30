@@ -1,4 +1,5 @@
-package com.groupe5.domaine;
+package com.groupe5.domaine.model;
+/*package com.groupe5.domaine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +34,24 @@ public class Utilisateur {
     
     @Column(nullable=true)
     private String email;
-    
-/*Utilsation de OneToMany pour joindre les classes Utilisateur et Evenement */
-   @OneToMany(targetEntity = Evenement.class, mappedBy = "utilisateur",cascade = CascadeType.ALL)
+*/
+
+/*
+    Utilsation de OneToMany pour joindre les classes Utilisateur et Evenement 
+*/
+   //@OneToMany(targetEntity = Evenement.class, mappedBy = "utilisateur",cascade = CascadeType.ALL)
    //@JoinColumn(name = "evenements")
-   private List<Evenement> evenements = new ArrayList<>();
+   //private List<Evenement> evenements = new ArrayList<>();
 
   /* --------------les Constructeurs--------------- */
-    public Utilisateur() {}
+  //  public Utilisateur() {}
 
-    /*l'attribut id sera generer automatiquemnent donc il n'est pas necessaire de l'introduire dans la constructeur */
-    public Utilisateur(String nom, String prenom, String password, String role, String email) {
+/*
+    l'attribut id sera generer automatiquemnent donc il n'est pas necessaire de l'introduire dans la constructeur
+*/
+
+
+/*  public Utilisateur(String nom, String prenom, String password, String role, String email) {
         super();
         this.nom = nom;
         this.prenom = prenom;
@@ -51,9 +59,11 @@ public class Utilisateur {
         this.role = role;
         this.email = email;
     }
+*/
 
     /* --------------les getters et les setters--------------- */
 
+/* 
     public int getIdUtilisateur() {
         return idUtilisateur;
     }
@@ -110,3 +120,5 @@ public class Utilisateur {
     }
   
 }
+
+*/

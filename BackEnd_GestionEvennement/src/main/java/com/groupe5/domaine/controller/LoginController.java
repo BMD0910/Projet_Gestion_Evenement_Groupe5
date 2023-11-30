@@ -1,4 +1,4 @@
-package com.groupe5.web;
+package com.groupe5.domaine.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.groupe5.domaine.AccountCredentials;
+import com.groupe5.domaine.model.AccountCredentials;
 import com.groupe5.service.JwtService;
 
 

@@ -1,4 +1,4 @@
-package com.groupe5.domaine;
+package com.groupe5.domaine.model;
 
 import java.util.ArrayList;
 import java.util.List;

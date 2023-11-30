@@ -1,4 +1,4 @@
-package com.groupe5;
+package com.groupe5.securite;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -48,7 +48,7 @@ public class SecurityConfig{
 		 .cors().and()
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-		.authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/login").permitAll()
+		.authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/login","/api/users/create","/api/evenement/create").permitAll()
 		.anyRequest().authenticated().and()
 		
 		.exceptionHandling().authenticationEntryPoint(exceptionHandler).and()
@@ -74,13 +74,17 @@ public class SecurityConfig{
 		return source;
 	}
 	
-	@Autowired
+	/*@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception  {
-		auth.userDetailsService(userDetailsService)
-		.passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(userDetailsService);
+		//.passwordEncoder(new BCryptPasswordEncoder());
+	}*/
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
 	}
-	
-	
+
 	
 }

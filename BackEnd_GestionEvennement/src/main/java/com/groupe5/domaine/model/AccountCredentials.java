@@ -1,4 +1,4 @@
-package com.groupe5.domaine;
+package com.groupe5.domaine.model;
 
 public class AccountCredentials {
 	private String username;

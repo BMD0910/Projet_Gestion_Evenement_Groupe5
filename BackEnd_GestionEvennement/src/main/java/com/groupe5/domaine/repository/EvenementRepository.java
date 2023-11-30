@@ -1,4 +1,6 @@
-package com.groupe5.domaine;
+package com.groupe5.domaine.repository;
+
+import com.groupe5.domaine.model.Evenement;
 
 import org.springframework.data.repository.CrudRepository;
 

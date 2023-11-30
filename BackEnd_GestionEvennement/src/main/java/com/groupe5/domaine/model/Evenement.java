@@ -1,4 +1,4 @@
-package com.groupe5.domaine;
+package com.groupe5.domaine.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +31,28 @@ public class Evenement {
 
     @Column(nullable=false)
     private String date ;
+
+    @Column(nullable=false)
+    private String heure ;
     
     @Column(nullable=false)
     private String lieu ;
 
+     @Column(nullable=true)
+    private String lien ;
+
+
+
+/*La Notation ManyToOne permet de joindre des Evenement a un user */
+   // @ManyToOne /*(fetch = FetchType.LAZY)*/
+   // @JoinColumn(name = "utilisateur")
+   //  private Utilisateur utilisateur  ;
+
 /*La Notation ManyToOne permet de joindre des Evenement a un user */
     @ManyToOne /*(fetch = FetchType.LAZY)*/
-    @JoinColumn(name = "utilisateur")
-     private Utilisateur utilisateur  ;
+    
+    @JoinColumn(name = "user" ,nullable=true)
+     private User user  ;     
 
     //private Utilisateur utilisateur;
 
@@ -50,33 +64,35 @@ public class Evenement {
 
 
 
+    public Evenement(User user, String nom, String type, String description, String date, String heure, String lieu) {
+        this.user = user;
+        this.nom = nom;
+        this.type = type;
+        this.description = description;
+        this.date = date;
+        this.heure = heure;
+        this.lieu = lieu;
+        
+    }
+
     /* --------------les Constructeurs--------------- */
     public Evenement() {}
 
-    public Evenement( Utilisateur utilisateur,String nom, String type, String description, String date, String lieu) 
+    public Evenement(String lien ,String nom, String type, String description, String date, String lieu, String heure) 
     {
         super();
         //this.utilisateur = utilisateur;
-        this.utilisateur = utilisateur;
-       
+        //this.user = user;
+        this.lien = lien;
         this.nom = nom;
         this.type = type;
         this.description = description;
         this.date = date;
         this.lieu = lieu;
+        this.heure = heure;
     }
 
-    public Evenement(String nom, String type, String description, String date, String lieu) 
-    {
-        super();
-        //this.utilisateur = utilisateur;
-       
-        this.nom = nom;
-        this.type = type;
-        this.description = description;
-        this.date = date;
-        this.lieu = lieu;
-    }
+
 
 
 
@@ -131,12 +147,12 @@ public class Evenement {
         this.lieu = lieu;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setUtilisateur(User user) {
+        this.user = user;
     }
 
-    public Utilisateur getUtilisateur() {
-        return this.utilisateur;
+    public User getUtilisateur() {
+        return this.user;
     }
 
     public List<Prestataire> getPrestataires() {
@@ -151,5 +167,29 @@ public class Evenement {
         this.prestataire.add(prestataire) ;
        
      }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
+
+    public String getLien() {
+        return lien;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public List<Prestataire> getPrestataire() {
+        return prestataire;
+    }
+
+    
+
+
      
 }

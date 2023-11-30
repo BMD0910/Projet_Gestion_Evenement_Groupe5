@@ -1,4 +1,4 @@
-package com.groupe5;
+package com.groupe5.securite;
 
 import java.io.IOException;
 import java.io.PrintWriter;
