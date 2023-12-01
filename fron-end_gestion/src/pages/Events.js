@@ -44,8 +44,9 @@ export default function Events() {
 
         </Card.Text>
         
-        <Button variant="primary">Modifier</Button>
-        <Button variant="primary">Supprimer</Button>
+        <Button variant="primary"><Link to="/EditEvent">Modifier</Link></Button>
+        <Button variant="primary"><Link to="/Prestataires">+Prestataires</Link></Button>
+        
       
       </Card.Body>
       </Card>
@@ -63,8 +64,10 @@ export default function Events() {
          <small>📍Lieu:</small><br/>
 
         </Card.Text>
-        <Button variant="primary">Modifier</Button>
-        <Button variant="primary">Supprimer</Button>
+        <Button variant="primary"><Link to="/EditEvent">Modifier</Link></Button>
+        <Button variant="primary"><Link to="/Prestataires">+Prestataires</Link></Button>
+
+        
 
       </Card.Body>
       </Card>
@@ -83,8 +86,10 @@ export default function Events() {
          <small>📍Lieu:</small><br/>
 
   </Card.Text>
-  <Button variant="primary"><Link to="/EditEvent">EditEvent</Link></Button>
-  <Button variant="primary">Supprimer</Button>
+  <Button variant="primary"><Link to="/EditEvent">Modifier</Link></Button>
+  <Button variant="primary"><Link to="/Prestataires">+Prestataires</Link></Button>
+
+  
 
 </Card.Body>
 </Card>

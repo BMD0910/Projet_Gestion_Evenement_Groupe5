@@ -759,7 +759,15 @@ img{
     padding: 30px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-
+   
+    
+    p{
+      
+      float: right;
+      margin: 0;
+     
+    }
+    
 
     img{
       padding-top: -200px;
@@ -770,7 +778,7 @@ img{
 
 
   }
-
+ 
   .images1{
     padding-top: 90px;
     margin-right: 1000px;
@@ -779,6 +787,7 @@ img{
     padding: 30px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    
   };
   .images2{
     padding-top: 50px;
@@ -919,6 +928,9 @@ img{
     display: flex;
     align-items: center;
     padding: 10px;
+
+    
+      
     img{
       height: 400px;
       width: 300px;

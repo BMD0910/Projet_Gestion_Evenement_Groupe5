@@ -11,6 +11,7 @@ import r from "../img/Bas_slider.jpg";
 import b from "../img/jules.jpg";
 import s from "../img/soda.jpg";
 import { Link } from 'react-router-dom';
+
 // Import Swiper styles
 import 'swiper/css';
 

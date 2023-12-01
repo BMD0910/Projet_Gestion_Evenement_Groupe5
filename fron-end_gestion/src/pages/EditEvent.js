@@ -28,7 +28,7 @@ function EditEvent() {
 
   return (
     <div className="auth">
-      <h1>Creer un événement</h1>
+      <h1>Modifier un événement</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
