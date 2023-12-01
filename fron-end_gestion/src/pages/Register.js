@@ -4,19 +4,45 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  const [inputs, setInputs] = useState({
+ /* const [inputs, setInputs] = useState({
     username: "",
     email: "",
     password: "",
-  });
-  const [err, setError] = useState(null);
+  });*/
 
+  const [user, setUser] = useState({
+    username : "" ,
+    password : "",
+    role : "" ,
+    nom : "" ,
+    prenom : "" 
+  });
+
+
+  /***************************************************************************/ 
+
+
+  const [err, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+ /***************************************************************************/ 
 
+
+  const handleChange = event => {
+        
+       setUser({ ...user, [event.target.name ] : event.target.value });
+       
+    };
+
+ /***************************************************************************/ 
+
+    const  handleSave = () =>{    
+      addUser(user) ;          
+    };
+
+ /***************************************************************************/ 
+  
+  /*
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -25,39 +51,67 @@ const Register = () => {
     } catch (err) {
       setError(err.response.data);
     }
-  };
+  };*/
+
+  const addUser = user =>{
+    fetch("http://localhost:8080/api/users/create",{
+        method: "POST" ,
+        headers: {"content-Type" : "application/json"},
+        body: JSON.stringify(user) ,
+        })
+        .then(response => {
+           if (response.ok) {
+            alert("user creer") ;
+           }
+           else {
+            
+            alert("Cette email est deja utiliser  !") ;
+           }
+           
+         }) 
+        .catch(err => alert(err)) ;
+        alert("s")
+        
+};
+
+ /***************************************************************************/ 
+
 
   return (
     <div className="auth">
-      <h1>Register</h1>
-      <form>
+      <h1>Creation de Compte</h1>
+      <form onSubmit={handleSave}>
         <input
           required
           type="text"
           placeholder="Nom"
-          name="Nom"
+          name="nom"
+          value={user.nom}
           onChange={handleChange}
         />
         <input
           required
           type="text"
           placeholder="Prenom"
-          name="Prenom"
-          onChange={handleChange}
+          name="prenom"
+          value={user.prenom}
+          onChange={handleChange}  
         />
         <input
           required
           type="text"
           placeholder="Role"
-          name="Role"
+          name="role"
+          value={user.role}
           onChange={handleChange}
         />
         <input
           required
           type="email"
           placeholder="email"
-          name="email"
+          name="username"
           onChange={handleChange}
+          value={user.username}
         />
         <input
           required
@@ -65,8 +119,9 @@ const Register = () => {
           placeholder="password"
           name="password"
           onChange={handleChange}
+          value={user.password}
         />
-        <button onClick={handleSubmit}>Register</button>
+        <button><Link to="/login">Inscrir</Link></button>
         {err && <p>{err}</p>}
         <span>
           Do you have an account? <Link to="/login">Login</Link>

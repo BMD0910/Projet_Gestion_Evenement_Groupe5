@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-import x from "../img/animateur.png";
-import y from "../img/fleuriste.png";
-import z from "../img/Photo_julien_traiteur_369_9_PPResponsive.jpg";
-
-import Card from 'react-bootstrap/Card';
+import x from "../img/Catering-Service-Traiteur-Plateau-Delices.jpg";
+import y from "../img/Awards Dinner 19.jpg";
+import z from "..//img/Le-Comptoir-Traiteur-88-1024x682.jpg";
+import w from "../img/Photo_julien_traiteur_369_9_PPResponsive.jpg";
 
 
 
@@ -46,71 +45,38 @@ const PrestataireSearchPage = () => {
       <br/>
       <br/>
       <br/>
-      <div className='events'>
 
-      
+      <div className='images'>
+       
+        <img src={x} height={120}/>
+      </div>
       <br/>
-    
+      <br/>
+      
+      
+      
 
-      <div className='EVENTS'>
-      <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={z}/>
-      <Card.Body>
-        <Card.Title>Baye Mor Diouf</Card.Title>
-        <Card.Text>
-         
-         <small>Traiteur</small><br/>
-         
-        </Card.Text>
-        
+      
+      <div className='images1'>
+        <img src={y} height={120}/>
+      </div>
+      <br/>
+      <br/>
       
         
+      <div className='images2'> 
+        <img src={z} height={120}/>
+      </div>
+      <br/>
+      <br/>
       
-      </Card.Body>
-      </Card>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={x}/>
-      <Card.Body>
-        <Card.Title>Alioune Diop</Card.Title>
-        <Card.Text>
-        <small>Animateur</small><br/>
-        
-
-        </Card.Text>
-     
-        
-
-      </Card.Body>
-      </Card>
-
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-      <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={y}/>
-      <Card.Body>
-      <Card.Title>Mareme Thiam</Card.Title>
-      <Card.Text>
-          <small>Fleuriste</small><br/>
-       
-  </Card.Text>
-
-  
-
-</Card.Body>
-</Card>
-
-          
-
-
-
-
+      <div className='images3'>
+        <img src={w} height={120}/>
       </div>
-      </div>
-   
 
-       
+      
+
 
 
     </div>

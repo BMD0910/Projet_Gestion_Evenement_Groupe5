@@ -5,23 +5,60 @@ import React, { useState } from 'react';
 
 
 function Formulaire() {
-  const [eventData, setEventData] = useState({
-    eventName: '',
-    eventDate: '',
-    eventTime: '',
-    eventLocation: '',
-    eventDescription: '',
-    eventType: '',
-  });
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEventData({ ...eventData, [name]: value });
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Ajoutez ici la logique pour envoyer les données au back-end
-  };
+  
+  
+  const [event1, setEvent] = useState({
+     
+    /* user : getCurrentUser() ,*/
+     lien : sessionStorage.getItem('username'),
+     nom: '',
+     type: '',
+     description: '',
+     date: '',
+     heure: '',
+     lieu: ''
+   });
+   
+   
+   
+   
+   //permet d'enregistrer les modifications faites sur les champs du fomulaire 
+   const handleChange = event => {
+        
+    setEvent({ ...event1, [event.target.name ] : event.target.value });
+    
+ };
+
+
+ const addEvent = event1 =>{
+  fetch("http://localhost:8080/api/evenement/create",{
+      method: "POST" ,
+      headers: {"content-Type" : "application/json"},
+      body: JSON.stringify(event1) ,
+      })
+      .then(response => {
+         if (response.ok) {
+          alert("evenement creer") ;
+         }
+         else {
+          alert("Quelque chose c'est mal passe !") ;
+         }
+         
+       }) 
+      .catch(err => alert(err)) ;
+      alert(event1.user.username) ;
+ };
+
+
+/*****************************************/ 
+
+   const  handleSave = () =>{       
+    addEvent(event1) ;         
+};
+
+
+/*****************************************/ 
 
 
 
@@ -29,45 +66,51 @@ function Formulaire() {
   return (
     <div className="auth">
       <h1>Creer un événement</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSave}>
         <input
+          required
           type="text"
-          name="eventName"
+          name="nom"
           placeholder="Nom de l'événement"
-          value={eventData.eventName}
-          onChange={handleInputChange}
+          value={event1.nom}
+          onChange={handleChange}
         />
         <input
+          required
           type="date"
-          name="eventDate"
+          name="date"
           placeholder="Date de l'événement"
-          value={eventData.eventDate}
-          onChange={handleInputChange}
+          value={event1.date}
+          onChange={handleChange}
         />
         <input
+          required
           type="time"
-          name="eventTime"
+          name="heure"
           placeholder="Heure de l'événement"
-          value={eventData.eventTime}
-          onChange={handleInputChange}
+          value={event1.heure}
+          onChange={handleChange}
         />
         <input
+          required
           type="text"
-          name="eventLocation"
+          name="lieu"
           placeholder="Lieu de l'événement"
-          value={eventData.eventLocation}
-          onChange={handleInputChange}
+          value={event1.lieu}
+          onChange={handleChange}
         />
         <textarea
-          name="eventDescription"
+          required
+          name="description"
           placeholder="Description de l'événement"
-          value={eventData.eventDescription}
-          onChange={handleInputChange}
+          value={event1.description}
+          onChange={handleChange}
         />
         <select
-          name="eventType"
-          value={eventData.eventType}
-          onChange={handleInputChange}
+          required
+          name="type"
+          value={event1.type}
+          onChange={handleChange}
         >
           <option value="">Sélectionnez le type d'événement</option>
           <option value="Fête d'anniversaire">Fête d'anniversaire</option>

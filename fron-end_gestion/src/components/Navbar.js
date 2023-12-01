@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-
-
-
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { deepOrange} from '@mui/material/colors';
 
-import x from "../img/Nouveau_logo.jpg";
+import event2 from "../img/event2.png";
 
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
@@ -18,12 +14,12 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link to="/">
-          <img src={x} alt="" />
+          <img src={event2} alt="" />
           </Link>
         </div>
         <div className="links">
           <Link className="link" to="/">
-            <h6>Accueil</h6>
+            <h6>Acceuil</h6>
           </Link>
           <Link className="link" to="/Events">
             <h6>Events</h6>
@@ -39,21 +35,12 @@ const Navbar = () => {
           {currentUser ? (
             <span onClick={logout}>Logout</span>
           ) : (
-
             <Stack direction="row" spacing={2}>
             <Link className="link" to="/login">
             <Avatar src="/broken-image.jpg" />
             </Link>
             </Stack>
-
-            
           )}
-
-          <Stack direction="row" spacing={2}>
-            <Link className="link" to="/login">
-           <Avatar sx={{ bgcolor: deepOrange[500] }}>D</Avatar>
-           </Link>
-          </Stack>
           
         </div>
       </div>

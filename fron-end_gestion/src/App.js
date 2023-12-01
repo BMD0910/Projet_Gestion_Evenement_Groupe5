@@ -15,10 +15,6 @@ import Footer from "./components/Footer";
 
 import "./style.scss";
 import Formulaire from "./pages/Formulaire";
-import Mes_Events from "./pages/Mes_Events";
-import Services from "./pages/Services";
-import EditEvent from "./pages/EditEvent";
-
 
 const Layout = () => {
   return (
@@ -48,21 +44,8 @@ const router = createBrowserRouter([
         element: <Formulaire />,
       },
       {
-        path: "/Mes_Events",
-        element: <Mes_Events/>,
-      },
-
-      {
         path: "/Prestataires",
         element: <Prestataires />,
-      },
-      {
-        path: "/EditEvent",
-        element: <EditEvent/>
-      },
-      {
-        path: "/Services",
-        element: <Services />,
       },
     ],
   },

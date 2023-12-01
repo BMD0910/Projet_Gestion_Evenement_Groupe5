@@ -1,153 +1,65 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { Card } from 'react-bootstrap';
+import React from 'react'
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import w from "../img/33796_800x480.jpg";
 
-import x from "../img/slider1.jpg";
-import y from "../img/Slider2.jpg";
-import z from "..//img/slider3.jpg";
-import w from "../img/slider4.jpg";
-import r from "../img/Bas_slider.jpg";
-import b from "../img/jules.jpg";
-import s from "../img/soda.jpg";
-import { Link } from 'react-router-dom';
-
-// Import Swiper styles
-import 'swiper/css';
-
-
-
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
+    title: 'Bed',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
+    title: 'Kitchen',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
+    title: 'Sink',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
+    title: 'Books',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1574180045827-681f8a1a9622',
+    title: 'Chairs',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62',
+    title: 'Candle',
+  },
+]
 
 
 export default function Acceuil() {
   return (
-<div className='Essaie'>
+    <div className='Essaie'>
       
 
       <h2 className='text'> Besoin d'architecte d'evenement? <br/>
-          faite confiance a Events Planning
+          faite confiance a Events planner
       </h2>
 
       <br/>
       <br/>
 
-  <div>
-      <br/>
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide><img src={x}/></SwiperSlide>
-      <SwiperSlide><img src={y}/></SwiperSlide>
-      <SwiperSlide><img src={z}/></SwiperSlide>
-      <SwiperSlide><img src={w}/></SwiperSlide>
-      
-    </Swiper>
+      <div  className='slider'>
 
-    
-  </div>
-
-      <br/>
-      <br/>
-      <br/>
-
-      <small className='zboss'>Bienvenue a Event's Planning</small>
-
-      <br/>
-      <br/>
-      <br/>
+      <ImageList sx={{ width: 500, height: 450 }} variant="woven" cols={3} gap={8}>
+      {itemData.map((item) => (
+        <ImageListItem key={item.img}>
+          <img
+            srcSet={`${item.img}?w=161&fit=crop&auto=format&dpr=2 2x`}
+            src={`${item.img}?w=161&fit=crop&auto=format`}
+            alt={item.title}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+    </div>
 
       
-      
-      <small className='zboss1'>Dans le royaume de la création de plateformes d'événements, <br/>
-          Nous sommes les architectes de l'inattendu.<br/>
-          Chaque ligne de code est un maillon d'une chaîne d'expériences,<br/>
-          Chaque événement est une porte ouverte vers l'inconnu.</small>
-    
-    
-      <br/>
-      <br/>
-      <br/>
-
-      <h3> Voulez vous savoir plus cliquer ici !</h3>
-      <br/>
-      <br/>
-      
-      <small className='zboss1'> Tu es Client ou Prestataires?</small>
-      <br/>
-      <br/>
-      <br/>
-
-      <Stack direction="row" spacing={2}>
-      <Button variant="contained" color="success" className='zboss'> <Link to="/register">Client</Link></Button>
-      <p>ou</p>
-      <Button variant="contained" color="success" className='zboss'> <Link to="/register">Prestataires</Link></Button>
-      
-    
-      </Stack>
-      <img src={r} alt='pas image' width={500} className='Bas_slider'/>
-      <br/>
-      <br/>
-      <h2 className='souligner'>My Team
-        
-      </h2>
-      <br/>
-      <br/>
-      <br/>
-
-      <div className='zboss2'>
-      <Card style={{width: '18rem' }}>
-      <Card.Img style={{ width:'14rem', height:'14rem'}} variant="top" src={b} />
-      <Card.Body>
-        <Card.Title className='zboss1'>Souleymane Diagne</Card.Title>
-        <Card.Text>
-          Designer
-        </Card.Text>
-        
-      </Card.Body>
-    </Card>
-
-    <Card style={{width: '18rem' }}>
-      <Card.Img style={{ width:'14rem', height:'14rem'}} variant="top" src={s} />
-      <Card.Body>
-        <Card.Title className='zboss1'>Mareme Thiam</Card.Title>
-        <Card.Text>
-          Big Data
-        </Card.Text>
-       </Card.Body>
-    </Card>
-
-    <Card style={{width: '18rem' }}>
-      <Card.Img style={{ width:'14rem', height:'14rem'}} variant="top" src={w} />
-      <Card.Body>
-        <Card.Title className='zboss1'>Baye Mor Diouf</Card.Title>
-        <Card.Text>
-          Developpeur Web
-        </Card.Text>
-       </Card.Body>
-    </Card>
-
-
-    <Card style={{width: '18rem' }}>
-      <Card.Img style={{ width:'14rem', height:'14rem'}} variant="top" src={w} />
-      <Card.Body>
-        <Card.Title className='zboss1'>Alioune Diop </Card.Title>
-        <Card.Text>
-         Cyber security
-        </Card.Text>
-       </Card.Body>
-    </Card>
-    
-    
-      </div>
-      
-    
-        
-    
-      
-      
 
 
 
@@ -156,31 +68,6 @@ export default function Acceuil() {
 
 
 
-
-
-  
-
-
-  <div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-
-</div>
-  );
-};
-
+    </div>
+  )
+}
