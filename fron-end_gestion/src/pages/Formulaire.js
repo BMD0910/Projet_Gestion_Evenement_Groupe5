@@ -47,14 +47,15 @@ function Formulaire() {
          
        }) 
       .catch(err => alert(err)) ;
-      alert(event1.user.username) ;
+      alert("ca passe");
  };
 
 
 /*****************************************/ 
 
    const  handleSave = () =>{       
-    addEvent(event1) ;         
+    addEvent(event1) ; 
+         
 };
 
 

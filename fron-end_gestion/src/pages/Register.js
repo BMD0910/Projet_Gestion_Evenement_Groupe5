@@ -121,7 +121,7 @@ const Register = () => {
           onChange={handleChange}
           value={user.password}
         />
-        <button><Link to="/login">Inscrir</Link></button>
+        <button>Inscrir</button>
         {err && <p>{err}</p>}
         <span>
           Do you have an account? <Link to="/login">Login</Link>
