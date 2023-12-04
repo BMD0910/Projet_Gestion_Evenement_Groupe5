@@ -1,7 +1,9 @@
+import React, { useState , useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Card } from 'react-bootstrap';
+
 
 import x from "../img/slider1.jpg";
 import y from "../img/Slider2.jpg";
@@ -20,6 +22,47 @@ import 'swiper/css';
 
 
 export default function Acceuil() {
+
+  const idUser = sessionStorage.getItem("idUser") ;
+  const [compte, setCompte] = useState({
+    username : ""+sessionStorage.getItem("username") ,
+    password : ""      
+   });
+
+
+    
+
+  useEffect(() => {
+    
+     
+  
+    
+    const rechercheId =  () =>{
+      fetch("http://localhost:8080/api/users/idUser",{
+         method: "POST" ,
+         headers: {"content-Type" : 'text/plain'},
+         body: JSON.stringify(sessionStorage.getItem("username")) ,
+          })
+         .then(response => {
+         
+          
+            sessionStorage.setItem("idUser", response.headers.get("Authorization"))
+            
+            //fetchEvennement();
+    
+          
+           
+          
+        }) 
+       .catch(err =>alert(err) ) ;
+        
+    };
+  
+   
+    rechercheId();
+  
+  }, []);
+
   return (
 <div className='Essaie'>
       

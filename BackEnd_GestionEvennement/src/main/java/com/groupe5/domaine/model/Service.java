@@ -23,7 +23,7 @@ public class Service {
     @Column(nullable=false, unique=true)
 	private String nom;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String description;
     /*Utilisation de ManyToMany pour effectuer la jointure de Service et Prestataire */
     @ManyToMany(targetEntity = Prestataire.class)

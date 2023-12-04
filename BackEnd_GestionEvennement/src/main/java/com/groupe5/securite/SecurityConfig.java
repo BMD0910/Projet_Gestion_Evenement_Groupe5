@@ -48,7 +48,9 @@ public class SecurityConfig{
 		 .cors().and()
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-		.authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/login","/api/users/create","/api/evenement/create").permitAll()
+		.authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/login","/api/users/create","/api/evenement/create","/api/evenements","/api/users/idUser").permitAll().and()
+		.authorizeHttpRequests().requestMatchers(HttpMethod.GET, "/api/evenements").permitAll()
+
 		.anyRequest().authenticated().and()
 		
 		.exceptionHandling().authenticationEntryPoint(exceptionHandler).and()

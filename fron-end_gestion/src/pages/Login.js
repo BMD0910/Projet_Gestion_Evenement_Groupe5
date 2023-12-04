@@ -1,24 +1,33 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //import { AuthContext } from "../context/authContext";
 import { stepperClasses } from "@mui/material";
+import { wait } from "@testing-library/user-event/dist/utils";
+import {jwtDecode} from "jwt-decode"
 
-const Login = (props) => {
+const Login = () => {
+  const navigate = useNavigate();
+  sessionStorage.setItem("idUser", null);
+
+ 
   
+/***************************************************************************/  
+
+
   const [compte, setCompte] = useState({
     username : "" ,
     password : ""      
    });
 
   sessionStorage.setItem("jwt", null) ;
+  sessionStorage.setItem("username", null) ;
 
 /***************************************************************************/  
   const [err, setError] = useState("");
 
-  const navigate = useNavigate();
-
+  
 
 /***************************************************************************/  
 
@@ -30,9 +39,9 @@ const Login = (props) => {
 
 
 /***************************************************************************/ 
-/*const [verifier, setVerifier] = useState(true);
 
-  const connexion = async (compte) =>{
+/*
+  const connexion =  (compte) =>{
      fetch("http://localhost:8080/login",{
         method: "POST" ,
         headers: {"content-Type" : "application/json"},
@@ -42,56 +51,68 @@ const Login = (props) => {
            const jwtToken = response.headers.get("Authorization");
            if (jwtToken != null) {
               sessionStorage.setItem("jwt", jwtToken) ;
-              alert(jwtToken) ;
+              sessionStorage.setItem("username", compte.username) ;
+              navigate("/events")
             }
             else
             {
-              alert("mot de pass incorect !") ;
+              alert("Username ou mot de passe incorrect !") ;
             }
            
          }) 
         .catch(err =>alert(err) ) ;
-        alert(verifier) ;
+       
  };
+
+ const handleSubmit = async (e) => {
+    
+    e.preventDefault();
+    try {
+      connexion(compte) ;
+    } catch (err) {
+      setError("Username ou mot de passe incorrect !");
+    } 
+  };
+
 
  */
 
+
+
  
-
- const connexion = async (inputs) => {
-   const res = await axios.post("http://localhost:8080/login", compte);
-   return res ; 
-};
-
-
-
- /***************************************************************************/ 
-
-
-/*const handleSubmit = async () => {
-  const jwt = localStorage.getItem('jwt');
-    await connexion(compte) ;
-    navigate("/");
-}*/
-
-/***************************************************************************/ 
 
   const handleSubmit = async (e) => {
     
     e.preventDefault();
     try {
-      const res = await connexion(compte) ;
-      alert("connexion avec succes")
-      sessionStorage.setItem("username", compte.username) ;
-      navigate("/");
-    } catch (err) {
-      setError("Username ou mot de passe incorrect !");
+      fetch("http://localhost:8080/login",{
+     method: "POST" ,
+     headers: {"content-Type" : "application/json"},
+     body: JSON.stringify(compte) ,
+     })
+     .then(response => {
+        const jwtToken = response.headers.get("Authorization");
+        if (jwtToken != null) {
+           sessionStorage.setItem("jwt", jwtToken) ;
+           sessionStorage.setItem("username", compte.username) ;
+           navigate("/")
+         }
+         else
+         {
+          setError("Username ou mot de passe incorrect !"); 
+         }
+        
+      }) 
+     .catch(err => setError("Une probleme de connexion est survenue veiller resseyer !")) ;
     }
-   
+    catch (err) {
+      setError("Username ou mot de passe incorrect !");
+    } 
   };
 
 /***************************************************************************/ 
 
+  
   return (
     <div className="auth">
       <h1>Login</h1>
